@@ -501,7 +501,7 @@ written to stdout
 
 If successfully, you now that inter-POD networking is working, even when the pods are on different nodes
 
-We wil now test the DNS.  Let's expose nginx as a service:
+We wil now test the DNS.  Let's expose `nginx` as a service:
 
 ```
 kubectl expose deployment nginx --port=80
@@ -520,13 +520,12 @@ kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP   104m
 nginx        ClusterIP   10.103.191.84   <none>        80/TCP    55s
 ```
  
-Let's run busybox again
+Let's run `busybox` again
 
-
-``
+```
 kubectl run -i -t busybox --image=busybox --restart=Never
 ```
-and now run wget but use the service name `nginx` isntead of the IP address:
+and now run `wget` but use the service name `nginx` isntead of the IP address:
 
 ```
 / # wget http://nginx -O -
