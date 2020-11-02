@@ -8,11 +8,13 @@ For this guide, I will be install a small cluster with a single control plane no
 
 The VMs I will be using and their IP addresses are:
 
-|Hostname|IP Address|
-|:--|:--|
-|k8s-dev-master|192.168.20.37|
-|k8s-dev-worker1|192.168.20.38|
-|k8s-dev-worker2|192.168.20.39|
+|Hostname|IP Address|vCPUs|RAM|Disk|
+|:--|:--|-:-|--:|--:|
+|k8s-dev-master|192.168.20.37|2|4GB|128GB|
+|k8s-dev-worker1|192.168.20.38|2|4GB|128GB|
+|k8s-dev-worker2|192.168.20.39|2|4GB|128GB|
+
+You can use smaller VMs, but you will want at least 2 vCPUs and 2GB of RAM
 
 For the POD network, the CIDR `10.244.0.0/16` will be used.
 
