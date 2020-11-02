@@ -410,5 +410,96 @@ kube-system   replicaset.apps/coredns-f9fd979d6                  2         2    
 
 You should now have a fully running kubernetes cluster.  In this step, we will perform a few tests to ensure everyting is working as expected, especially that the POD networking and CoreDNS are functioning correctly.
 
+We will deploy 2 replicas of `nginx`
+
+```
+kubectl create deployment nginx --image=nginx --replicas=2
+```
+Check to see if each worker has a pod
+
+```
+ kubectl get pods -o wide
+```
+
+> Output
+
+```
+NAME                     READY   STATUS    RESTARTS   AGE    IP               NODE              NOMINATED NODE   READINESS GATES
+nginx-6799fc88d8-2slzq   1/1     Running   0          57s    10.244.66.1      k8s-dev-worker2   <none>           <none>
+nginx-6799fc88d8-mk4lj   1/1     Running   0          2m7s   10.244.198.129   k8s-dev-worker1   <none>           <none>
+```
+
+As we can see, each worker has a pod.  Let's now run a busybox container:
+
+``
+kubectl run -i -t busybox --image=busybox --restart=Never
+```
+From the buxy box command run `wget` using each of the POD IP addresses.
+
+```
+/ # wget http://10.244.66.1 -O -
+Connecting to 10.244.66.1 (10.244.66.1:80)
+writing to stdout
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+-                    100% |******************************************************************************************************|   612  0:00:00 ETA
+written to stdout
+/ # wget http://10.244.198.129 -O -
+Connecting to 10.244.198.129 (10.244.198.129:80)
+writing to stdout
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+-                    100% |******************************************************************************************************|   612  0:00:00 ETA
+written to stdout
+```
+
+If successfully, you now that inter-POD networking is working, even when the pods are on different nodes
+
 
 
