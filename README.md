@@ -245,6 +245,39 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
+To test, run the following as the regular user
+
+```
+kubectl get all -A
+```
+
+> Output
+
+```
+NAMESPACE     NAME                                         READY   STATUS    RESTARTS   AGE
+kube-system   pod/coredns-f9fd979d6-pswmt                  0/1     Pending   0          2m12s
+kube-system   pod/coredns-f9fd979d6-ztw6c                  0/1     Pending   0          2m12s
+kube-system   pod/etcd-k8s-dev-master                      1/1     Running   0          2m21s
+kube-system   pod/kube-apiserver-k8s-dev-master            1/1     Running   0          2m21s
+kube-system   pod/kube-controller-manager-k8s-dev-master   1/1     Running   0          2m21s
+kube-system   pod/kube-proxy-bnvb2                         1/1     Running   0          2m12s
+kube-system   pod/kube-scheduler-k8s-dev-master            1/1     Running   0          2m21s
+
+NAMESPACE     NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+default       service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP                  2m30s
+kube-system   service/kube-dns     ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   2m28s
+
+NAMESPACE     NAME                        DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+kube-system   daemonset.apps/kube-proxy   1         1         1       1            1           kubernetes.io/os=linux   2m28s
+
+NAMESPACE     NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
+kube-system   deployment.apps/coredns   0/2     2            0           2m28s
+
+NAMESPACE     NAME                                DESIRED   CURRENT   READY   AGE
+kube-system   replicaset.apps/coredns-f9fd979d6   2         2         0       2m12s
+```
+
+
 
 
 
