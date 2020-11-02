@@ -281,7 +281,7 @@ kube-system   replicaset.apps/coredns-f9fd979d6   2         2         0       2m
 
 ## Step 4 - Add the POD Networking
 
-We wil now install Calidco for POD networking.  The YAML file is located here https://docs.projectcalico.org/v3.16/manifests/calico.yaml, but we will load a customized one that sets the POD CIDE to `10.244.0.0/16`.  No ther changes were made.
+We wil now install Calidco for POD networking.  The YAML file is located here https://docs.projectcalico.org/v3.16/manifests/calico.yaml, but we will load a customized one that sets the POD CIDR to `10.244.0.0/16`.  No other changes were made.
 
 Run the following on the master node
 
@@ -320,7 +320,7 @@ serviceaccount/calico-kube-controllers created
 
 ## Step 5 - Configure The Worker NOdes
 
-We will now add the worker nodes to the cluster.  The following must be don eon each worker node.  Be sure to use *your* token
+We will now add the worker nodes to the cluster.  The following must be done on each worker node.  Be sure to use *your* tokens.  You should have copy-pasted and saved this from the output from the `kubeadm init` command
 
 ```
 sudo kubeadm join 192.168.20.37:6443 --token dp7e ...[SNIP]...  ruu2ag \
@@ -360,7 +360,7 @@ k8s-dev-worker1   Ready    <none>   2m24s   v1.19.3
 k8s-dev-worker2   Ready    <none>   2m1s    v1.19.3
 ```
 
-Let's view everything that is running.  Rn the followng on the master node
+Let's view everything that is running.  Run the followng on the master node
 
 ```
 kubectl get all -A -o wide
@@ -403,5 +403,7 @@ kube-system   replicaset.apps/coredns-f9fd979d6                  2         2    
 
 ## Step 6 - Verification and Smoke Test
 
-xxxx
+You sould nw have a fully running kubernetes cluster.  In this step, we will perform a few tests to ensure everyting is working as expected, especially that the POD networking and CoreDNS are functioning correctly.
+
+
 
