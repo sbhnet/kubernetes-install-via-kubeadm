@@ -4,6 +4,15 @@ After woring though installing [Kubernetes the Hard Way on Bare Metal](https://g
 
 This is a guide on doing the install, step-by-step, and in order to make the process as simle as possiblem
 
+## Software Versions
+
+The software and versions installed will be:
+
+* Kubernetes v1.19.3
+* Calico v0.0.0
+
+## Servers and Infrastructure
+
 For this guide, I will be install a small cluster with a single control plane node and two worker nodes.  These will be VMs in VMWare ESXi, but should work for any VM or bare metal.
 
 The VMs I will be using and their IP addresses are:
@@ -16,10 +25,21 @@ The VMs I will be using and their IP addresses are:
 
 You can use smaller VMs, but you will want at least 2 vCPUs and 2GB of RAM
 
+Each server is running Ubuntu 20.04.1 64-bit
+
 For the POD network, the CIDR `10.244.0.0/16` will be used.
 
-The software and versions installed will be:
+On each server, disable swap if it not already disabled
 
-* Kubernetes v1.19.3
-* Calico v0.0.0
+```
+sudo swapoff -a
+```
+
+This will disable swap immediatly, but it is only temporary and will be re-enabled if you reboot.  To disable swap permanently, edit the `/etc/fstab` file and comment out the swap line:
+ 
+<img src="https://github.com/dleewo/kubernetes-the-hard-way-bare-metal/raw/main/images/fstab-swap.png" width="700" />
+
+The next time you reboot, swap will be disabled.
+
+
 
