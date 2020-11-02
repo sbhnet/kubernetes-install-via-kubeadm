@@ -233,8 +233,8 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 
 Then you can join any number of worker nodes by running the following on each as root:
 
-kubeadm join 192.168.20.37:6443 --token dp7eyd.jdpbnfw4z3ruu2ag \
-    --discovery-token-ca-cert-hash sha256:5b4af75846. ...[SNIP]...  f46c553b37860a08b 
+kubeadm join 192.168.20.37:6443 --token --token dp7e ...[SNIP]...  ruu2ag \
+    --discovery-token-ca-cert-hash sha256:5b4af75846 ...[SNIP]...  f46c553b37860a08b
 ```
 
 You should copy and paste the last line with the token to a test file to temporary location so you iwll have it later when adding the node
@@ -323,8 +323,8 @@ serviceaccount/calico-kube-controllers created
 We will now add the worker nodes to the cluster.  The following must be don eon each worker node.  Be sure to use *your* token
 
 ```
-sudo kubeadm join 192.168.20.37:6443 --token dp7eyd.jdpbnfw4z3ruu2ag \
-    --discovery-token-ca-cert-hash sha256:5b4af75846. ...[SNIP]...  f46c553b37860a08b
+sudo kubeadm join 192.168.20.37:6443 --token dp7e ...[SNIP]...  ruu2ag \
+    --discovery-token-ca-cert-hash sha256:5b4af75846 ...[SNIP]...  f46c553b37860a08b
 ```
 
 > Output
@@ -345,7 +345,7 @@ This node has joined the cluster:
 Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 ```
 
-To test, run the follwoin gon your master node:
+To test, run the following on your master node:
 
 ```
 kubectl get nodes
