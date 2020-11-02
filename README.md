@@ -279,6 +279,13 @@ NAMESPACE     NAME                                DESIRED   CURRENT   READY   AG
 kube-system   replicaset.apps/coredns-f9fd979d6   2         2         0       2m12s
 ```
 
+## Step 4 - Add the POD Networking
+
+Run the following on the master node
+
+```
+kubectl apply -f https://raw.githubusercontent.com/dleewo/kubernetes-install-via-kubeadm/main/calico.yaml
+```
 
 
 
