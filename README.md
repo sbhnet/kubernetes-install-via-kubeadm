@@ -318,7 +318,46 @@ deployment.apps/calico-kube-controllers created
 serviceaccount/calico-kube-controllers created
 ```
 
+## Step 5 - Configure The Worker NOdes
 
+We will now add the worker nodes to the cluster.  The following must be don eon each worker node.  Be sure to use *your* token
 
+```
+sudo kubeadm join 192.168.20.37:6443 --token dp7eyd.jdpbnfw4z3ruu2ag \
+    --discovery-token-ca-cert-hash sha256:5b4af75846. ...[SNIP]...  f46c553b37860a08b
+```
+
+> Output
+
+```
+[preflight] Running pre-flight checks
+[preflight] Reading configuration from the cluster...
+[preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -oyaml'
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+[kubelet-start] Starting the kubelet
+[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap...
+
+This node has joined the cluster:
+* Certificate signing request was sent to apiserver and a response was received.
+* The Kubelet was informed of the new secure connection details.
+
+Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
+```
+
+To test, run the follwoin gon your master node:
+
+```
+kubectl get nodes
+```
+
+> Output
+
+```
+NAME              STATUS   ROLES    AGE     VERSION
+k8s-dev-master    Ready    master   19m     v1.19.3
+k8s-dev-worker1   Ready    <none>   2m24s   v1.19.3
+k8s-dev-worker2   Ready    <none>   2m1s    v1.19.3
+```
 
 
