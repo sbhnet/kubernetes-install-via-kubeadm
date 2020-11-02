@@ -237,6 +237,8 @@ kubeadm join 192.168.20.37:6443 --token dp7eyd.jdpbnfw4z3ruu2ag \
     --discovery-token-ca-cert-hash sha256:5b4af75846. ...[SNIP]...  f46c553b37860a08b 
 ```
 
+You should copy and paste the last line with the token to a test file to temporary location so you iwll have it later when adding the node
+
 As in the tail end of the output, run the following as a regular use to configure access to `kubectl`
 
 ```
