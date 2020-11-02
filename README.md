@@ -68,7 +68,7 @@ Then install the docker packages
 }
  ```
 
-Configure the docker daemon
+Configure the docker daemon.  This swicthes the cgroup driver to `systemd`
 
 ```
 cat <<EOF | sudo tee /etc/docker/daemon.json
@@ -81,6 +81,12 @@ cat <<EOF | sudo tee /etc/docker/daemon.json
   "storage-driver": "overlay2"
 }
 EOF
+```
+
+Restart docker
+
+```
+sudo systemctl restart docker
 ```
 
 You can verify Docker is working by running:
