@@ -157,7 +157,14 @@ We will now install the latest version of each package and then tell apt to not 
 
 ## Step 3 - Configure The Control Plane
 
-xxxxxx
+The commands in this state are only done in the `master` node
+
+Run `kubeadm`
+
+```
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+```
+
 
 
 
