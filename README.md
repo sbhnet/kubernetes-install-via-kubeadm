@@ -10,9 +10,9 @@ The VMs I will be using and their IP addresses are:
 
 |Hostname|IP Address|vCPUs|RAM|Disk|
 |:---|:---|--:--|---:|---:|
-|k8s-dev-master|192.168.20.37|2|4GB|128GB|
-|k8s-dev-worker1|192.168.20.38|2|4GB|128GB|
-|k8s-dev-worker2|192.168.20.39|2|4GB|128GB|
+|'k8s-dev-master'|'192.168.20.37'|2|4GB|128GB|
+|'k8s-dev-worker1'|'192.168.20.38'|2|4GB|128GB|
+|'k8s-dev-worker2'|'192.168.20.39'|2|4GB|128GB|
 
 You can use smaller VMs, but you will want at least 2 vCPUs and 2GB of RAM
 
