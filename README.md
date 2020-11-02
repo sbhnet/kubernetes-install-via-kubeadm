@@ -9,7 +9,7 @@ This is a guide on doing the install, step-by-step, and in order to make the pro
 The software and versions installed will be:
 
 * Kubernetes v1.19.3
-* Calico v0.0.0
+* Calico v3.16.4
 * Docker CE v 19.03.13
 
 For kubernetes and Docker, the steps will install whatever is the current release so your versions may differ.  The versions above are as of November 2 2020.
@@ -281,7 +281,12 @@ kube-system   replicaset.apps/coredns-f9fd979d6   2         2         0       2m
 
 ## Step 4 - Add the POD Networking
 
-We wil now install Calidco for POD networking.  The YAML file is located here https://docs.projectcalico.org/v3.16/manifests/calico.yaml, but we will load a customized one that sets the POD CIDR to `10.244.0.0/16`.  No other changes were made.
+We wil now install Calidco for POD networking.  The YAML file is located here https://docs.projectcalico.org/v3.16/manifests/calico.yaml, but we will load a customized one that sets the POD CIDR to `10.244.0.0/16`.  No other changes were made.  If you wish to install a different, or newer version of Calico, you should download the yaml and look for the `CALICO_IPV4POOL_CIDR` setting, uncomment it and set the POD CIDR
+
+```
+     - name: CALICO_IPV4POOL_CIDR
+       value: "10.244.0.0/16"
+```
 
 Run the following on the master node
 
@@ -318,7 +323,7 @@ deployment.apps/calico-kube-controllers created
 serviceaccount/calico-kube-controllers created
 ```
 
-## Step 5 - Configure The Worker NOdes
+## Step 5 - Configure The Worker Nodes
 
 We will now add the worker nodes to the cluster.  The following must be done on each worker node.  Be sure to use *your* tokens.  You should have copy-pasted and saved this from the output from the `kubeadm init` command
 
