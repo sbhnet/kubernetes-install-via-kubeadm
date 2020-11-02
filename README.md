@@ -360,4 +360,48 @@ k8s-dev-worker1   Ready    <none>   2m24s   v1.19.3
 k8s-dev-worker2   Ready    <none>   2m1s    v1.19.3
 ```
 
+Let's view everything that is running.  Rn the followng on the master node
+
+```
+kubectl get all -A -o wide
+```
+
+> Output
+
+```
+NAMESPACE     NAME                                         READY   STATUS    RESTARTS   AGE     IP              NODE              NOMINATED NODE   READINESS GATES
+kube-system   pod/calico-kube-controllers-7d569d95-sbbft   1/1     Running   0          7m45s   10.244.134.67   k8s-dev-master    <none>           <none>
+kube-system   pod/calico-node-7xlpw                        1/1     Running   0          4m43s   192.168.20.39   k8s-dev-worker2   <none>           <none>
+kube-system   pod/calico-node-gpkv9                        1/1     Running   0          7m45s   192.168.20.37   k8s-dev-master    <none>           <none>
+kube-system   pod/calico-node-j8wrb                        1/1     Running   0          5m7s    192.168.20.38   k8s-dev-worker1   <none>           <none>
+kube-system   pod/coredns-f9fd979d6-pswmt                  1/1     Running   0          22m     10.244.134.66   k8s-dev-master    <none>           <none>
+kube-system   pod/coredns-f9fd979d6-ztw6c                  1/1     Running   0          22m     10.244.134.65   k8s-dev-master    <none>           <none>
+kube-system   pod/etcd-k8s-dev-master                      1/1     Running   0          22m     192.168.20.37   k8s-dev-master    <none>           <none>
+kube-system   pod/kube-apiserver-k8s-dev-master            1/1     Running   0          22m     192.168.20.37   k8s-dev-master    <none>           <none>
+kube-system   pod/kube-controller-manager-k8s-dev-master   1/1     Running   0          22m     192.168.20.37   k8s-dev-master    <none>           <none>
+kube-system   pod/kube-proxy-bnvb2                         1/1     Running   0          22m     192.168.20.37   k8s-dev-master    <none>           <none>
+kube-system   pod/kube-proxy-lsfzq                         1/1     Running   0          5m7s    192.168.20.38   k8s-dev-worker1   <none>           <none>
+kube-system   pod/kube-proxy-zhtlw                         1/1     Running   0          4m43s   192.168.20.39   k8s-dev-worker2   <none>           <none>
+kube-system   pod/kube-scheduler-k8s-dev-master            1/1     Running   0          22m     192.168.20.37   k8s-dev-master    <none>           <none>
+
+NAMESPACE     NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE   SELECTOR
+default       service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP                  22m   <none>
+kube-system   service/kube-dns     ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   22m   k8s-app=kube-dns
+
+NAMESPACE     NAME                         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE     CONTAINERS    IMAGES                          SELECTOR
+kube-system   daemonset.apps/calico-node   3         3         3       3            3           kubernetes.io/os=linux   7m46s   calico-node   calico/node:v3.16.4             k8s-app=calico-node
+kube-system   daemonset.apps/kube-proxy    3         3         3       3            3           kubernetes.io/os=linux   22m     kube-proxy    k8s.gcr.io/kube-proxy:v1.19.3   k8s-app=kube-proxy
+
+NAMESPACE     NAME                                      READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS                IMAGES                            SELECTOR
+kube-system   deployment.apps/calico-kube-controllers   1/1     1            1           7m46s   calico-kube-controllers   calico/kube-controllers:v3.16.4   k8s-app=calico-kube-controllers
+kube-system   deployment.apps/coredns                   2/2     2            2           22m     coredns                   k8s.gcr.io/coredns:1.7.0          k8s-app=kube-dns
+
+NAMESPACE     NAME                                               DESIRED   CURRENT   READY   AGE     CONTAINERS                IMAGES                            SELECTOR
+kube-system   replicaset.apps/calico-kube-controllers-7d569d95   1         1         1       7m46s   calico-kube-controllers   calico/kube-controllers:v3.16.4   k8s-app=calico-kube-controllers,pod-template-hash=7d569d95
+kube-system   replicaset.apps/coredns-f9fd979d6                  2         2         2       22m     coredns                   k8s.gcr.io/coredns:1.7.0          k8s-app=kube-dns,pod-template-hash=f9fd979d6
+```
+
+## Step 6 - Verification and Smoke Test
+
+xxxx
 
