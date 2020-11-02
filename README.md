@@ -1,8 +1,8 @@
 # Install kubernetes Using kubeadm
 
-After woring though installing [Kubernetes the Hard Way on Bare Metal](https://github.com/dleewo/kubernetes-the-hard-way-bare-metal), I wanted to install it using the kubeadm way.  Trying to so by followjng [Bootstrapping clusters with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/) wasn't as straightforward as I hoped as it involves jumping around t oother pages mid-step.
+After woring though installing [Kubernetes the Hard Way on Bare Metal](https://github.com/dleewo/kubernetes-the-hard-way-bare-metal), I wanted to install it using the kubeadm way.  Trying to so by followjng [Bootstrapping clusters with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/) wasn't as straightforward as I hoped as it involves jumping around to other pages mid-step.
 
-This is a guide on doing the install, step-by-step, and in order to make the process as simle as possiblem
+This is a guide on doing the install, step-by-step, and in order to make the process as simple as possible
 
 ## Software Versions
 
@@ -128,9 +128,9 @@ We will now install the latest version of each package and then tell apt to not 
 
 ```
 {
-    apt-get update
-    apt-get install -y kubelet kubeadm kubectl
-    apt-mark hold kubelet kubeadm kubectl
+    sudo apt-get update
+    sudo apt-get install -y kubelet kubeadm kubectl
+    sudo apt-mark hold kubelet kubeadm kubectl
 }
 ```
 
