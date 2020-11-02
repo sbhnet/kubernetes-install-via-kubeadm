@@ -501,5 +501,75 @@ written to stdout
 
 If successfully, you now that inter-POD networking is working, even when the pods are on different nodes
 
+We wil now test the DNS.  Let's expose nginx as a service:
+
+```
+kubectl expose deployment nginx --port=80
+```
+Get the services:
+
+```
+kubectl get services
+```
+
+> Output
+
+```
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP   104m
+nginx        ClusterIP   10.103.191.84   <none>        80/TCP    55s
+```
+ 
+Let's run busybox again
+
+
+``
+kubectl run -i -t busybox --image=busybox --restart=Never
+```
+and now run wget but use the service name `nginx` isntead of the IP address:
+
+```
+/ # wget http://nginx -O -
+Connecting to nginx (10.103.191.84:80)
+writing to stdout
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+-                    100% |************************************************************************|   612  0:00:00 ETA
+written to stdout
+```
+
+Use the following to clean up the pods and deployments used for the test
+
+```
+kubectl delete pod busybox
+kubectl delete deployment nginx
+kubectl delete service nginx
+```
+
+
+
 
 
