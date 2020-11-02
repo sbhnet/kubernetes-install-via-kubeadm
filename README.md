@@ -8,9 +8,9 @@ This is a guide on doing the install, step-by-step, and in order to make the pro
 
 The software and versions installed will be:
 
-* Kubernetes v1.19.3
-* Calico v3.16.4
-* Docker CE v 19.03.13
+* [Kubernetes](https://kubernetes.io/) v1.19.3
+* [Calico](https://www.projectcalico.org/) v3.16.4
+* [Docker](https://www.docker.com/) CE v 19.03.13
 
 For kubernetes and Docker, the steps will install whatever is the current release so your versions may differ.  The versions above are as of November 2 2020.
 
