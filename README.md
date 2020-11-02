@@ -1,8 +1,8 @@
 # Install kubernetes Using kubeadm
 
-After woring though installing [Kubernetes the Hard Way on Bare Metal](https://github.com/dleewo/kubernetes-the-hard-way-bare-metal), I wanted to install it using the kubeadm way.  Trying to so by followjng [Bootstrapping clusters with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/) wasn't as straightforward as I hoped as it involves jumping around to other pages mid-step.
+After working though installing [Kubernetes the Hard Way on Bare Metal](https://github.com/dleewo/kubernetes-the-hard-way-bare-metal), I wanted to install it using the `kubeadm` way.  Trying to so by followjng [Bootstrapping clusters with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/) wasn't as straightforward as I hoped as it involves jumping around to other pages mid-step.
 
-This is a guide on doing the install, step-by-step, and in order to make the process as simple as possible
+This is a guide on doing the install, step-by-step, and in order, to make the process as simple as possible for others to follow
 
 ## Software Versions
 
@@ -12,11 +12,11 @@ The software and versions installed will be:
 * [Calico](https://www.projectcalico.org/) v3.16.4
 * [Docker](https://www.docker.com/) CE v 19.03.13
 
-For kubernetes and Docker, the steps will install whatever is the current release so your versions may differ.  The versions above are as of November 2 2020.
+For kubernetes and Docker, the steps below will install whatever is the current release so your versions may differ.  The versions above are the latest versions as of November 2 2020.
 
 ## Servers and Infrastructure
 
-For this guide, I will be install a small cluster with a single control plane node and two worker nodes.  These will be VMs in VMWare ESXi, but should work for any VM or bare metal.
+For this guide, I will be installing a small cluster with a single control plane node and two worker nodes.  These will be VMs in VMWare ESXi, but should work for any VM or on bare metal machines.
 
 The VMs I will be using and their IP addresses are:
 
