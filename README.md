@@ -431,10 +431,10 @@ nginx-6799fc88d8-mk4lj   1/1     Running   0          2m7s   10.244.198.129   k8
 
 As we can see, each worker has a pod.  Let's now run a busybox container:
 
-``
+```
 kubectl run -i -t busybox --image=busybox --restart=Never
 ```
-From the buxy box command run `wget` using each of the POD IP addresses.
+From the busy box command line run `wget` using each of the POD IP addresses.
 
 ```
 / # wget http://10.244.66.1 -O -
