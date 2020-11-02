@@ -68,7 +68,22 @@ Then install the docker packages
 }
  ```
 
-You can verify Docket is working by running:
+Configure the docker daemon
+
+```
+cat <<EOF | sudo tee /etc/docker/daemon.json
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2"
+}
+EOF
+```
+
+You can verify Docker is working by running:
 
 ```
 sudo docker version
