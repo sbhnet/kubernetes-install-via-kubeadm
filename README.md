@@ -10,6 +10,7 @@ The software and versions installed will be:
 
 * Kubernetes v1.19.3
 * Calico v0.0.0
+* Docker CE v 19.o.o
 
 ## Servers and Infrastructure
 
