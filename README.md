@@ -107,7 +107,32 @@ Server: Docker Engine - Community
 ```
 
 
-## Step 2 - XXXXXXX
+## Step 2 - Install Kubernetes Packages
+
+This will install kubeadm, kubectl, and kubelt.  The folowing must be done on all threee servers
+
+```
+{
+    sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+}
+```
+
+```
+cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+```
+
+We will now install the latest version of each package and then tell apt to not upgrade them
+
+```
+{
+    apt-get update
+    apt-get install -y kubelet kubeadm kubectl
+    apt-mark hold kubelet kubeadm kubectl
+}
+```
 
 
-dddddd
+
