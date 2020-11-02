@@ -134,5 +134,10 @@ We will now install the latest version of each package and then tell apt to not 
 }
 ```
 
+## Step 3 - Configure The Control Plane
+
+xxxxxx
+
+
 
 
