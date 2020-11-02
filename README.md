@@ -71,7 +71,7 @@ Then install the docker packages
 You can verify Docket is working by running:
 
 ```
-sudo docker versions
+sudo docker version
 ```
 
 > Output
