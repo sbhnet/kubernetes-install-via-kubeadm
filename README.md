@@ -281,7 +281,7 @@ kube-system   replicaset.apps/coredns-f9fd979d6   2         2         0       2m
 
 ## Step 4 - Add the POD Networking
 
-We wil now install Calidco for POD networking.  The YAML file is located here https://docs.projectcalico.org/v3.16/manifests/calico.yaml, but we will load a customized one that sets the POD CIDR to `10.244.0.0/16`.  No other changes were made.  If you wish to install a different, or newer version of Calico, you should download the yaml and look for the `CALICO_IPV4POOL_CIDR` setting, uncomment it and set the POD CIDR
+We wil now install Calico for POD networking.  The YAML file is located here https://docs.projectcalico.org/v3.16/manifests/calico.yaml, but we will load a customized one that sets the POD CIDR to `10.244.0.0/16`.  No other changes were made.  If you wish to install a different, or newer version of Calico, you should download the yaml and look for the `CALICO_IPV4POOL_CIDR` setting, uncomment it and set the POD CIDR
 
 ```
      - name: CALICO_IPV4POOL_CIDR
@@ -408,7 +408,7 @@ kube-system   replicaset.apps/coredns-f9fd979d6                  2         2    
 
 ## Step 6 - Verification and Smoke Test
 
-You sould nw have a fully running kubernetes cluster.  In this step, we will perform a few tests to ensure everyting is working as expected, especially that the POD networking and CoreDNS are functioning correctly.
+You should now have a fully running kubernetes cluster.  In this step, we will perform a few tests to ensure everyting is working as expected, especially that the POD networking and CoreDNS are functioning correctly.
 
 
 
