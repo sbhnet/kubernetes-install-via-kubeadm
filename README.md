@@ -365,6 +365,8 @@ k8s-dev-worker1   Ready    <none>   2m24s   v1.19.3
 k8s-dev-worker2   Ready    <none>   2m1s    v1.19.3
 ```
 
+It could take a few mins for the status to swicth from `NotReady` to `Ready`.
+
 Let's view everything that is running.  Run the followng on the master node
 
 ```
