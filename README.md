@@ -101,6 +101,8 @@ EOF
 Restart docker
 
 ```
+sudo systemctl daemon-reload
+
 sudo systemctl restart docker
 ```
 
