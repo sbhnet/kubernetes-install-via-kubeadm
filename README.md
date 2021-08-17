@@ -35,7 +35,22 @@ For the POD network, the CIDR `10.244.0.0/16` will be used.
 On each server, disable swap if it not already disabled
 
 ```
+cat <<EOF >  /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+EOF
+
+echo '1' > /proc/sys/net/ipv4/ip_forward
+echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
+
+
+
 sudo swapoff -a
+
+sed -i.bak -r 's/(.+ swap .+)/#\1/' /etc/fstab
+
 ```
 
 This will disable swap immediatly, but it is only temporary and will be re-enabled if you reboot.  To disable swap permanently, edit the `/etc/fstab` file and comment out the swap line:
