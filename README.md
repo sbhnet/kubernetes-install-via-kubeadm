@@ -51,6 +51,16 @@ sudo swapoff -a
 
 sed -i.bak -r 's/(.+ swap .+)/#\1/' /etc/fstab
 
+modprobe -a ip_vs ip_vs_rr ip_vs_wrr ip_vs_sh nf_conntrack_ipv4
+
+You can edit the file /etc/modules (or create a new file in /etc/modules-load.d) containing names of required ones
+
+ip_vs
+ip_vs_rr
+ip_vs_wrr
+ip_vs_sh
+nf_conntrack_ipv4
+
 ```
 
 This will disable swap immediatly, but it is only temporary and will be re-enabled if you reboot.  To disable swap permanently, edit the `/etc/fstab` file and comment out the swap line:
